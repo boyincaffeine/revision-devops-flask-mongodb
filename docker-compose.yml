@@ -1,0 +1,18 @@
+version : "3.8"
+services :
+  rev:
+    image : mongo
+    ports :
+      - "27017:27017"
+    volumes :
+      - mongodata:/data/db
+
+  web :
+    build : .
+    ports :
+      - "5000:5000"
+    depends_on :
+      - rev
+
+volumes :
+    mongodata :
